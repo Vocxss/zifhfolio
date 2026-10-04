@@ -1,13 +1,59 @@
-let animation;
-
 gsap.registerPlugin(ScrollTrigger)
 
-const marqueeTrack = document.querySelector("#marquee-track");
-const marqueeGroup = document.querySelector("#marquee-group");
+let animation;
+let showNav = true 
+
+let lastScroll = window.scrollY
+
+window.addEventListener("scroll", () => {
+  let currentScrollProgress = window.scrollY
+  
+  if (currentScrollProgress <= 20) {
+    gsap.to(".nav", {
+      y: 0,
+      ease: "power2.out",
+      duration: .5  
+    })
+
+    showNav = true
+  }
+
+  if (currentScrollProgress - lastScroll > 10 && showNav) {
+    gsap.to(".nav", {
+      y: -100,
+      ease: "power2.out",
+      duration: .5
+    }) 
+    showNav = false
+  }
+  
+  if (currentScrollProgress - lastScroll < -10 && !showNav) {
+    gsap.to(".nav", {
+      y: 0,
+      ease: "power2.out",
+      duration: .5
+    }) 
+    showNav = true
+  }
+  
+  lastScroll = currentScrollProgress
+})
+
+const marqueeTrack1 = document.querySelector("#marquee-track1");
+const marqueeGroup1 = document.querySelector("#marquee-group1");
+const marqueeTrack2 = document.querySelector("#marquee-track2");
+const marqueeGroup2 = document.querySelector("#marquee-group2");
 const horizontalTrack = document.querySelector("#horizontal-track");
 
-gsap.to(marqueeTrack, {
-  x: () => -marqueeGroup.offsetWidth,
+gsap.to(marqueeTrack1, {
+  x: () => -marqueeGroup1.offsetWidth,
+  duration: 15,
+  ease: "none",
+  repeat: -1
+});
+
+gsap.to(marqueeTrack2, {
+  x: () => -marqueeGroup2.offsetWidth,
   duration: 15,
   ease: "none",
   repeat: -1
@@ -98,3 +144,19 @@ gsap.to(horizontalTrack, {
   },
 });
 // console.log(themeIcon);
+
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const email = document.getElementById('email').value;
+  const pesan = document.getElementById('message').value;
+
+  const emailTujuan = "tsqf.h29@gmail.com";
+  const subjek = `New message from ${email}`;
+  
+  const isiEmail = `Hello, Zifh.\n\nemail: ${email}\nPesan: ${pesan}`;
+
+  const mailtoUrl = `mailto:${emailTujuan}?subject=${encodeURIComponent(subjek)}&body=${encodeURIComponent(isiEmail)}`;
+
+  window.location.href = mailtoUrl;
+});
