@@ -1,14 +1,13 @@
-let theme = "dark";
 let animation;
 
 gsap.registerPlugin(ScrollTrigger)
 
-const themeIcon = document.querySelector("#themeIcon");
-const track = document.querySelector("#marquee-track");
-const group = document.querySelector("#marquee-group");
+const marqueeTrack = document.querySelector("#marquee-track");
+const marqueeGroup = document.querySelector("#marquee-group");
+const horizontalTrack = document.querySelector("#horizontal-track");
 
-gsap.to(track, {
-  x: () => -group.offsetWidth,
+gsap.to(marqueeTrack, {
+  x: () => -marqueeGroup.offsetWidth,
   duration: 15,
   ease: "none",
   repeat: -1
@@ -20,7 +19,7 @@ gsap.to("#hero", {
     start: "center center",
     end: "bottom center",
     // markers: true,
-    scrub: 1,
+    scrub: true,
   },
   y: -50,
   ease: "power2.in"
@@ -46,7 +45,7 @@ tlHeroElement.fromTo(".hero-element", {
   }
 })
 
-gsap.fromTo(".bento",{
+gsap.fromTo(".bento", {
   opacity: 0,
   scale: 0,
 }, {
@@ -54,7 +53,7 @@ gsap.fromTo(".bento",{
     trigger: ".bento",
     start: "top bottom",
     // end: "",
-    markers: true,
+    // markers: true,
     scrub: 1,
   },
   opacity: 1,
@@ -62,16 +61,40 @@ gsap.fromTo(".bento",{
   ease: "expo.out",
 })
 
-// console.log(themeIcon);
-
-const changeTheme = () => {
-  if (theme == "light") {
-    theme = "dark";
-    document.body.classList.add("dark");
-    themeIcon.classList.replace("hgi-sun-03", "hgi-moon-02");
-  } else {
-    theme = "light";
-    document.body.classList.remove("dark");
-    themeIcon.classList.replace("hgi-moon-02", "hgi-sun-03");
+gsap.fromTo(".project-item",
+  {
+    opacity: 0,
+    scale: 0,
+  },
+  {
+    duration: 2,
+    opacity: 1,
+    scale: 1,
+    ease: "expo.out",
+    scrollTrigger: {
+      trigger: "#projects",
+      start: "bottom bottom",
+      end: "bottom bottom",
+      // markers: true,
+      onComplete: () => {
+        gsap.set(".hero-element", { clearProps: "all" })
+      }
+    },
   }
-};
+)
+
+gsap.to(horizontalTrack, {
+  x: () => -(horizontalTrack.scrollWidth - window.innerWidth),
+
+  ease: "none",
+
+  scrollTrigger: {
+    trigger: "#projects",
+    start: "top top",
+    end: () => `+=${horizontalTrack.scrollWidth}`,
+    scrub: true,
+    pin: true,
+    invalidateOnRefresh: true,
+  },
+});
+// console.log(themeIcon);
