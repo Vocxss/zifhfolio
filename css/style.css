@@ -1,3 +1,17 @@
-html {
-    scroll-behavior: smooth;
+/* Hindari scroll-behavior: smooth pada html/body karena bentrok langsung dengan Lenis smooth scroll */
+html, body {
+  /* scroll-behavior dikendalikan sepenuhnya oleh Lenis */
 }
+
+/* GPU Hardware Acceleration untuk elemen yang terus bergerak / dianimasikan */
+#horizontal-track,
+#marquee-track1,
+#marquee-track2,
+.nav,
+.hero-element,
+.bento {
+  will-change: transform;
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}

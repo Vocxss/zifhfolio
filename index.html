@@ -2,65 +2,81 @@
 <html lang="en">
 
 <head>
+  <!-- Meta Tags & Title -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ZiFh - Portfolio</title>
 
-  <link rel="stylesheet" href="css/style.css">
-
+  <!-- Favicon & Stylesheets -->
+  <link rel="icon" href="/assets/images/icons/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="https://use.hugeicons.com/font/icons.css" />
 
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..640&family=Great+Vibes&family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-    rel="stylesheet" />
+    rel="stylesheet"
+  />
 
+  <!-- External Libraries: GSAP, Lenis, & Tailwind CDN -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/DrawSVGPlugin.min.js"></script>
-
-  <!-- RoughEase, ExpoScaleEase and SlowMo are all included in the EasePack file -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/EasePack.min.js"></script>
-
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
+  <!-- Tailwind CSS Theme Configuration -->
   <style type="text/tailwindcss">
     @custom-variant dark (&:where(.dark, .dark *));
 
-      @theme {
-        --font-serif: "Bricolage Grotesque", serif;
-        --font-sans: "Hanken Grotesk", sans-serif;
-        --font-mono: "Space Mono", monospace;
-        --font-calligraphy: "Great Vibes", serif;
-        --color-primary: #abfb1a;
-        --color-secondary: #2563eb;
-        --color-foreground: #0d0a0b;
-        --color-background: #f0fdf4;
-      }
-    </style>
+    @theme {
+      --font-serif: "Bricolage Grotesque", serif;
+      --font-sans: "Hanken Grotesk", sans-serif;
+      --font-mono: "Space Mono", monospace;
+      --font-calligraphy: "Great Vibes", serif;
+      --color-primary: #abfb1a;
+      --color-secondary: #2563eb;
+      --color-foreground: #0d0a0b;
+      --color-background: #f0fdf4;
+    }
+  </style>
 </head>
 
 <body class="font-serif text-foreground duration-300 transition-colors overflow-x-hidden">
-  <!-- Background video -->
-  <div class="fixed inset-0 bg-black/20 -z-9 w-screen h-screen mx-auto"></div>
-  <div class="fixed inset-0 -z-10 w-screen h-screen mx-auto">
-    <video class="w-full h-full object-cover" src="assets/images/background/grid.webm" autoplay loop muted></video>
+
+  <!-- ==================== BACKGROUND VIDEO ==================== -->
+  <div class="fixed inset-0 bg-black/20 -z-9 w-screen h-screen mx-auto pointer-events-none"></div>
+  <div class="fixed inset-0 -z-10 w-screen h-screen mx-auto pointer-events-none overflow-hidden">
+    <video
+      class="w-full h-full object-cover"
+      src="assets/images/background/grid.webm"
+      autoplay
+      loop
+      muted
+      playsinline
+    ></video>
   </div>
 
-  <!-- Navbar -->
+  <!-- ==================== NAVBAR ==================== -->
   <nav
-    class="nav flex md:justify-center md:w-max w-full justify-between items-stretch text-foreground gap-8 fixed top-4 z-10 text-xs transition-none md:right-1/2 md:translate-x-1/2 md:px-0 px-4">
+    class="nav flex md:justify-center md:w-max w-full justify-between items-stretch text-foreground gap-8 fixed top-4 z-10 text-xs transition-none md:right-1/2 md:translate-x-1/2 md:px-0 px-4"
+  >
+    <!-- Status Badge (Desktop Only) -->
     <div
-      class=" bg-transparent backdrop-blur-sm font-sans md:flex hidden text-nowrap justify-center items-center py-2 px-4 border border-primary rounded-xl">
+      class="bg-transparent backdrop-blur-sm font-sans md:flex hidden text-nowrap justify-center items-center py-2 px-4 border border-primary rounded-xl"
+    >
       <p class="font-medium">
-        <span class="text-secondary animate-pulse">•</span> Available for
-        projects
+        <span class="text-secondary animate-pulse">•</span> Available for projects
       </p>
     </div>
+
+    <!-- Center Navigation Links -->
     <div
-      class="flex items-center justify-between md:gap-8 border border-primary py-2 px-4 rounded-xl max-w-xl w-max bg-transparent backdrop-blur-sm">
+      class="flex items-center justify-between md:gap-8 border border-primary py-2 px-4 rounded-xl max-w-xl w-max bg-transparent backdrop-blur-sm"
+    >
       <a href="#hero">
         <h1 class="font-bold text-primary text-xl ml-2">zfh</h1>
       </a>
@@ -69,39 +85,66 @@
         <a class="hover:text-secondary" href="#projects">Project</a>
       </div>
     </div>
-    <div class="md:flex hidden justify-center items-center gap-1 px-3 py-2 rounded-xl text-black bg-primary group">
+
+    <!-- Contact Button (Desktop) -->
+    <div
+      class="md:flex hidden justify-center items-center gap-1 px-3 py-2 rounded-xl text-black bg-primary group"
+    >
       <a class="group-hover:translate-x-1 transition-transform" href="#contact">Contact</a>
       <i class="hgi hgi-stroke hgi-rounded hgi-arrow-right-02 group-hover:translate-x-1 transition-transform"></i>
     </div>
-    <button id="hamburger"
-      class="md:hidden flex w-12 aspect-square rounded p-2 justify-center items-center text-xl text-black bg-primary z-50 cursor-pointer">
-      <i class="hgi hgi-stroke hgi-rounded hgi-menu-09"></i>
+
+    <!-- Hamburger Menu Toggle (Mobile) -->
+    <button
+      id="hamburger"
+      class="md:hidden flex w-12 aspect-square rounded p-2 justify-center items-center text-xl text-black bg-primary z-50 cursor-pointer"
+    >
+      <i class="hgi hgi-stroke hgi-menu-09"></i>
     </button>
   </nav>
 
-  <div id="mobile-nav" class="hidden top-16 right-4 p-4 bg-white rounded-tl-xl rounded-b-xl text-secondary z-40">
+  <!-- Mobile Dropdown Menu -->
+  <div
+    id="mobile-nav"
+    class="hidden top-16 right-4 p-4 bg-white rounded-tl-xl rounded-b-xl text-secondary z-40"
+  >
     <div class="flex flex-col gap-4">
       <a class="hover:text-secondary" href="#about">About</a>
       <a class="hover:text-secondary" href="#projects">Project</a>
-      <div class="flex justify-center items-center gap-1 px-3 py-2 rounded-xl text-black bg-primary group z-50">
+      <div
+        class="flex justify-center items-center gap-1 px-3 py-2 rounded-xl text-black bg-primary group z-50"
+      >
         <a class="group-hover:translate-x-1 transition-transform" href="#contact">Contact</a>
         <i class="hgi hgi-stroke hgi-rounded hgi-arrow-right-02 group-hover:translate-x-1 transition-transform"></i>
       </div>
     </div>
   </div>
 
-  <!-- Hero Section -->
+  <!-- ==================== HERO SECTION ==================== -->
   <section id="hero" class="relative flex flex-col justify-center items-center gap-4 min-h-dvh">
-    <img loading="eager" style="opacity: 0"
+    <!-- Floating Decorative Elements -->
+    <img
+      loading="eager"
+      style="opacity: 0"
       class="hero-element absolute top-12 md:right-8 right-4 text-primary md:w-52 w-32 hover:-rotate-164 aspect-square rotate-12"
-      src="assets/images/elements/flower_green.png" alt="" />
-    <img loading="eager" style="opacity: 0"
+      src="assets/images/elements/flower_green.png"
+      alt=""
+    />
+    <img
+      loading="eager"
+      style="opacity: 0"
       class="hero-element absolute bottom-12 md:left-8 left-4 text-primary md:w-52 w-32 hover:rotate-270 aspect-square rotate-12"
-      src="assets/images/elements/cross_blue.png" alt="" />
+      src="assets/images/elements/cross_blue.png"
+      alt=""
+    />
+
+    <!-- Hero Content -->
     <p class="font-mono text-xs uppercase">your creative web developer</p>
     <h1 class="text-primary font-bold md:text-[8rem] sm:text-7xl text-6xl">
       Muh Tsaqif
     </h1>
+
+    <!-- Action Buttons -->
     <div class="flex items-center gap-8">
       <button class="group px-3 py-2 text-sm flex items-center gap-1 rounded-xl bg-primary text-black">
         <a href="#contact" class="group-hover:translate-x-1 transition-transform">
@@ -116,9 +159,7 @@
     </div>
   </section>
 
-  <!-- Marquee Divider -->
-  <!-- Marquee Divider -->
-  <!-- section marquee divider start -->
+  <!-- ==================== RUNNING TEXT (MARQUEE 1) ==================== -->
   <div id="marquee" class="w-full overflow-hidden text-black">
     <div id="marquee-track1" class="bg-primary w-max flex p-4 font-black">
       <div id="marquee-group1" class="flex items-center gap-4 md:text-[64px] text-4xl pr-8">
@@ -143,21 +184,27 @@
       </div>
     </div>
   </div>
-  <!-- section marquee divider end -->
 
-  <!-- About Section -->
-  <section id="about"
-    class="bg-secondary relative z-2 md:p-24 py-8 px-4 flex flex-col justify-center items-center gap-8 min-h-dvh">
+  <!-- ==================== ABOUT SECTION ==================== -->
+  <section
+    id="about"
+    class="bg-secondary relative z-2 md:p-24 py-8 px-4 flex flex-col justify-center items-center gap-8 min-h-dvh"
+  >
+    <!-- Row 1: Bio & Services Bento -->
     <div class="max-w-5xl flex md:flex-row flex-col gap-8 justify-center items-stretch">
+      <!-- Bio Card -->
       <div class="bento flex md:w-3/5 max-w-xl flex-col gap-2 p-12 rounded-2xl bg-background text-foreground">
         <h1 class="font-bold text-4xl">
           Who <span class="text-lime-400">Am I</span>
         </h1>
         <p class="font-sans md:text-2xl text-lg mb-2">
           I'm <span class="text-secondary font-bold">Muh Tsaqif</span>
-          <img loading="lazy" src="assets/images/background/gwjh.png"
+          <img
+            loading="lazy"
+            src="assets/images/background/gwjh.png"
             class="inline-block align-middle rounded-sm hover:scale-[5] 2xl:hover:scale-[6] hover:relative ease-out transition-transform w-12 aspect-[4/3] object-cover object-top"
-            alt="" />
+            alt=""
+          />
           - a
           <span class="font-bold text-lime-400">Frontend Developer</span>
           focused on creating digital experiences that are
@@ -169,9 +216,13 @@
           for the user.
         </p>
       </div>
+
+      <!-- Stats & Services Column -->
       <div class="md:w-2/5 md:max-w-md gap-8 flex flex-col items-stretch justify-center rounded-xl">
+        <!-- Stats Card -->
         <div
-          class="bento w-full bg-primary px-6 py-8 rounded-xl grid grid-rows-2 divide-y divide-black/40 text-black gap-4">
+          class="bento w-full bg-primary px-6 py-8 rounded-xl grid grid-rows-2 divide-y divide-black/40 text-black gap-4"
+        >
           <p class="flex items-end justify-between font-mono pb-4 text-sm font-bold">
             <span class="text-blue-700 text-2xl">3</span>
             Projects
@@ -181,90 +232,115 @@
             Average Rating
           </p>
         </div>
+
+        <!-- Services Tags Card -->
         <div
-          class="bento w-full bg-background px-6 py-8 rounded-xl flex flex-wrap divide-y divide-black/40 text-black gap-4">
+          class="bento w-full bg-background px-6 py-8 rounded-xl flex flex-wrap divide-y divide-black/40 text-black gap-4"
+        >
           <div
-            class="relative px-2 py-4 border rounded-xl border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110">
+            class="relative px-2 py-4 border rounded-xl border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110"
+          >
             <span
-              class="w-6 h-6 bg-secondary flex justify-center items-center rounded-xl p-2 text-xs absolute -top-2 -left-2 text-white">1</span>
+              class="w-6 h-6 bg-secondary flex justify-center items-center rounded-xl p-2 text-xs absolute -top-2 -left-2 text-white"
+            >1</span>
             <i class="hgi hgi-stroke hgi-rounded hgi-code text-xl"></i>
             <p class="text-sm font-mono">Frontend</p>
           </div>
           <div
-            class="relative px-2 py-4 border rounded-xl border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110">
+            class="relative px-2 py-4 border rounded-xl border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110"
+          >
             <span
-              class="w-6 h-6 bg-secondary flex justify-center items-center rounded-xl p-2 text-xs absolute -top-2 -left-2 text-white">2</span>
+              class="w-6 h-6 bg-secondary flex justify-center items-center rounded-xl p-2 text-xs absolute -top-2 -left-2 text-white"
+            >2</span>
             <i class="hgi hgi-stroke hgi-rounded hgi-database-02 text-xl"></i>
             <p class="text-sm font-mono">Backend</p>
           </div>
           <div
-            class="relative px-2 py-4 border rounded-xl border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110">
+            class="relative px-2 py-4 border rounded-xl border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110"
+          >
             <span
-              class="w-6 h-6 bg-secondary flex justify-center items-center rounded-xl p-2 text-xs absolute -top-2 -left-2 text-white">3</span>
+              class="w-6 h-6 bg-secondary flex justify-center items-center rounded-xl p-2 text-xs absolute -top-2 -left-2 text-white"
+            >3</span>
             <i class="hgi hgi-stroke hgi-rounded hgi-web-design-01 text-xl"></i>
             <p class="text-sm font-mono">UI/UX</p>
           </div>
           <div
-            class="relative px-2 py-4 border rounded-xl border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110">
+            class="relative px-2 py-4 border rounded-xl border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110"
+          >
             <span
-              class="w-6 h-6 bg-secondary flex justify-center items-center rounded-xl p-2 text-xs absolute -top-2 -left-2 text-white">4</span>
+              class="w-6 h-6 bg-secondary flex justify-center items-center rounded-xl p-2 text-xs absolute -top-2 -left-2 text-white"
+            >4</span>
             <i class="hgi hgi-stroke hgi-rounded hgi-align-selection text-xl"></i>
             <p class="text-sm font-mono">Graphics</p>
           </div>
           <div
-            class="relative px-2 py-4 border rounded-xl border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110">
+            class="relative px-2 py-4 border rounded-xl border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110"
+          >
             <span
-              class="w-6 h-6 bg-secondary flex justify-center items-center rounded-xl p-2 text-xs absolute -top-2 -left-2 text-white">5</span>
+              class="w-6 h-6 bg-secondary flex justify-center items-center rounded-xl p-2 text-xs absolute -top-2 -left-2 text-white"
+            >5</span>
             <i class="hgi hgi-stroke hgi-rounded hgi-motion-02 text-xl"></i>
             <p class="text-sm font-mono">Motion</p>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- Row 2: Currently Learning & Tech Stack Bento -->
     <div class="max-w-5xl flex md:flex-row flex-col gap-4 items-stretch">
+      <!-- Currently Learning Card -->
       <div class="bento flex-1 flex flex-col gap-4 pt-4 pb-8 px-6 rounded-2xl bg-primary text-black">
         <p class="font-mono text-secondary text-xs font-bold uppercase">
           currently learning
         </p>
         <p class="text-4xl font-bold">Data Science & Data Analyst</p>
       </div>
+
+      <!-- Tech Stacks Card -->
       <div class="bento flex-1 flex flex-col gap-4 pt-4 pb-8 px-6 rounded-2xl bg-background text-foreground">
         <p class="font-mono text-secondary text-xs font-bold uppercase">
           techstacks
         </p>
         <div class="flex flex-wrap gap-2">
           <div
-            class="relative px-2 py-4 border rounded-xl border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110 w-max">
+            class="relative px-2 py-4 border rounded-xl border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110 w-max"
+          >
             <i class="hgi hgi-stroke hgi-rounded hgi-react text-blue-500 text-xl"></i>
             <p class="text-sm font-mono">ReactJS</p>
           </div>
           <div
-            class="relative px-2 py-4 border rounded-xl border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110 w-max">
+            class="relative px-2 py-4 border rounded-xl border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110 w-max"
+          >
             <img src="assets/images/icons/next.png" alt="" class="w-4 h-4 object-cover" />
             <p class="text-sm font-mono">NextJS</p>
           </div>
           <div
-            class="relative px-2 py-4 border rounded-xl border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110 w-max">
+            class="relative px-2 py-4 border rounded-xl border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110 w-max"
+          >
             <i class="hgi hgi-stroke hgi-rounded hgi-typescript-01 text-blue-500 text-xl"></i>
             <p class="text-sm font-mono">Typescript</p>
           </div>
           <div
-            class="relative px-2 py-4 border rounded-xl border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110 w-max">
+            class="relative px-2 py-4 border rounded-xl border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110 w-max"
+          >
             <i class="hgi hgi-stroke hgi-rounded hgi-tailwindcss text-sky-500 text-xl"></i>
             <p class="text-sm font-mono">TailwindCSS</p>
           </div>
           <div
-            class="relative px-2 py-4 border rounded-xl border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110 w-max">
+            class="relative px-2 py-4 border rounded-xl border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110 w-max"
+          >
             <i class="hgi hgi-stroke hgi-rounded hgi-shadcn-square text-black text-xl"></i>
             <p class="text-sm font-mono">Shadcn UI</p>
           </div>
           <div
-            class="relative px-2 py-4 border rounded-xl border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110 w-max">
+            class="relative px-2 py-4 border rounded-xl border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110 w-max"
+          >
             <i class="hgi hgi-stroke hgi-rounded hgi-keyframe text-lime-500 text-xl"></i>
             <p class="text-sm font-mono">GSAP</p>
           </div>
           <div
-            class="relative px-2 py-4 border rounded-xl border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110 w-max">
+            class="relative px-2 py-4 border rounded-xl border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110 w-max"
+          >
             <i class="hgi hgi-stroke hgi-rounded hgi-framer text-amber-500 text-xl"></i>
             <p class="text-sm font-mono">Framer Motion</p>
           </div>
@@ -273,7 +349,7 @@
     </div>
   </section>
 
-  <!-- section marquee divider start -->
+  <!-- ==================== RUNNING TEXT (MARQUEE 2) ==================== -->
   <div id="marquee" class="w-full overflow-hidden text-black">
     <div id="marquee-track2" class="bg-primary w-max flex p-4 font-black">
       <div id="marquee-group2" class="flex items-center gap-4 md:text-[64px] text-4xl pr-8">
@@ -302,30 +378,39 @@
       </div>
     </div>
   </div>
-  <!-- section marquee divider end -->
 
-  <!-- Projects Section -->
+  <!-- ==================== PROJECTS SECTION ==================== -->
   <section id="projects" class="bg-background text-foreground relative z-2 md:pt-16 overflow-hidden md:min-h-dvh">
+    <!-- Section Heading -->
     <div class="project-item flex flex-col justify-center items-center md:mt-0 mt-16 gap-2">
       <p class="font-mono text-xs uppercase font-bold text-secondary">
-        some of my</span>
+        some of my
       </p>
       <p class="md:text-7xl text-4xl text-lime-500 rounded-xl w-max font-bold mb-4">
         Selected Projects
       </p>
     </div>
-    <div id="horizontal-track"
-      class="w-max md:h-full h-max relative flex md:flex-row flex-col items-center project-item">
-      <!-- Project Card 1 -->
+
+    <!-- Horizontal Pinned Scroll Track -->
+    <div
+      id="horizontal-track"
+      class="w-max md:h-full h-max relative flex md:flex-row flex-col items-center project-item"
+    >
+      <!-- Project Card 1: Moles -->
       <div class="bg-primary w-screen md:h-full flex justify-center md:items-stretch items-center py-12 md:px-0 px-8">
         <div class="flex md:flex-row flex-col justify-center gap-8">
           <div class="md:w-1/2 w-full h-max">
-            <img loading="lazy" src="assets/images/background/moles.jpg" alt=""
-              class="w-full object-contain rounded-xl" />
+            <img
+              loading="lazy"
+              src="assets/images/background/moles.jpg"
+              alt=""
+              class="w-full object-contain rounded-xl"
+            />
           </div>
           <div class="md:w-1/4 w-full h-max flex flex-col bg-background rounded-xl p-4">
-            <span class="w-full bg-secondary px-4 text-sm text-background rounded-xl font-bold py-2 mb-4">Project
-              01/03</span>
+            <span class="w-full bg-secondary px-4 text-sm text-background rounded-xl font-bold py-2 mb-4">
+              Project 01/03
+            </span>
             <h1 class="text-4xl font-bold mx-2 mb-2">Moles</h1>
             <p class="font-sans mx-2 mb-8">
               An all in one study tools website to maximize and efficient your
@@ -337,23 +422,28 @@
               </p>
               <div class="flex flex-wrap gap-2 mx-2">
                 <span
-                  class="relative w-max aspect-square p-2 border rounded-lg border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110">
+                  class="relative w-max aspect-square p-2 border rounded-lg border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110"
+                >
                   <i class="hgi hgi-stroke hgi-rounded hgi-react text-blue-500 text-xl"></i>
                 </span>
                 <span
-                  class="relative w-max aspect-square p-2 border rounded-lg border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110">
+                  class="relative w-max aspect-square p-2 border rounded-lg border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110"
+                >
                   <img src="assets/images/icons/next.png" alt="" class="w-4 h-4 object-cover" />
                 </span>
                 <span
-                  class="relative w-max aspect-square p-2 border rounded-lg border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110">
+                  class="relative w-max aspect-square p-2 border rounded-lg border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110"
+                >
                   <i class="hgi hgi-stroke hgi-rounded hgi-typescript-01 text-blue-500 text-xl"></i>
                 </span>
                 <span
-                  class="relative w-max aspect-square p-2 border rounded-lg border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110">
+                  class="relative w-max aspect-square p-2 border rounded-lg border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110"
+                >
                   <i class="hgi hgi-stroke hgi-rounded hgi-tailwindcss text-sky-500 text-xl"></i>
                 </span>
                 <span
-                  class="relative w-max aspect-square p-2 border rounded-lg border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110">
+                  class="relative w-max aspect-square p-2 border rounded-lg border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110"
+                >
                   <i class="hgi hgi-stroke hgi-rounded hgi-shadcn-square text-black text-xl"></i>
                 </span>
               </div>
@@ -362,15 +452,16 @@
         </div>
       </div>
 
-      <!-- Project Card 2 -->
+      <!-- Project Card 2: Digilib -->
       <div class="bg-secondary w-screen md:h-full flex justify-center md:items-stretch items-center py-12 md:px-0 px-8">
         <div class="flex md:flex-row flex-col justify-center gap-8">
           <div class="md:w-1/2 w-full h-max">
             <img src="assets/images/background/digilib.jpg" alt="" class="w-full object-contain rounded-xl" />
           </div>
           <div class="md:w-1/4 w-full h-max flex flex-col bg-background rounded-xl p-4">
-            <span class="w-full bg-primary px-4 text-sm text-foreground rounded-xl font-bold py-2 mb-4">Project
-              02/03</span>
+            <span class="w-full bg-primary px-4 text-sm text-foreground rounded-xl font-bold py-2 mb-4">
+              Project 02/03
+            </span>
             <h1 class="text-4xl font-bold mx-2 mb-2">Digilib</h1>
             <p class="font-sans mx-2 mb-8">
               Public library website that contains various collections of free
@@ -382,23 +473,28 @@
               </p>
               <div class="flex flex-wrap gap-2 mx-2">
                 <span
-                  class="relative w-max aspect-square p-2 border rounded-lg border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110">
+                  class="relative w-max aspect-square p-2 border rounded-lg border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110"
+                >
                   <i class="hgi hgi-stroke hgi-rounded hgi-react text-blue-500 text-xl"></i>
                 </span>
                 <span
-                  class="relative w-max aspect-square p-2 border rounded-lg border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110">
+                  class="relative w-max aspect-square p-2 border rounded-lg border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110"
+                >
                   <img src="assets/images/icons/next.png" alt="" class="w-4 h-4 object-cover" />
                 </span>
                 <span
-                  class="relative w-max aspect-square p-2 border rounded-lg border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110">
+                  class="relative w-max aspect-square p-2 border rounded-lg border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110"
+                >
                   <i class="hgi hgi-stroke hgi-rounded hgi-typescript-01 text-blue-500 text-xl"></i>
                 </span>
                 <span
-                  class="relative w-max aspect-square p-2 border rounded-lg border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110">
+                  class="relative w-max aspect-square p-2 border rounded-lg border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110"
+                >
                   <i class="hgi hgi-stroke hgi-rounded hgi-tailwindcss text-sky-500 text-xl"></i>
                 </span>
                 <span
-                  class="relative w-max aspect-square p-2 border rounded-lg border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110">
+                  class="relative w-max aspect-square p-2 border rounded-lg border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110"
+                >
                   <i class="hgi hgi-stroke hgi-rounded hgi-shadcn-square text-black text-xl"></i>
                 </span>
               </div>
@@ -407,15 +503,16 @@
         </div>
       </div>
 
-      <!-- Project Card 3 -->
+      <!-- Project Card 3: Mouse-IoT -->
       <div class="bg-primary w-screen h-full flex justify-center py-12">
         <div class="flex md:flex-row flex-col justify-center gap-8 md:px-0 px-8">
           <div class="md:w-1/2 w-full h-max">
             <img src="assets/images/background/mouseIoT.jpg" alt="" class="w-full object-contain rounded-xl" />
           </div>
           <div class="md:w-1/4 w-full h-max flex flex-col bg-background rounded-xl p-4">
-            <span class="w-full bg-secondary px-4 text-sm text-background rounded-xl font-bold py-2 mb-4">Project
-              03/03</span>
+            <span class="w-full bg-secondary px-4 text-sm text-background rounded-xl font-bold py-2 mb-4">
+              Project 03/03
+            </span>
             <h1 class="text-4xl font-bold mx-2 mb-2">Mouse-IoT</h1>
             <p class="font-sans mx-2 mb-8">
               An IoT project to monitor a room environtment such as camera
@@ -427,23 +524,28 @@
               </p>
               <div class="flex flex-wrap gap-2 mx-2">
                 <span
-                  class="relative w-max aspect-square p-2 border rounded-lg border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110">
+                  class="relative w-max aspect-square p-2 border rounded-lg border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110"
+                >
                   <i class="hgi hgi-stroke hgi-rounded hgi-react text-blue-500 text-xl"></i>
                 </span>
                 <span
-                  class="relative w-max aspect-square p-2 border rounded-lg border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110">
+                  class="relative w-max aspect-square p-2 border rounded-lg border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110"
+                >
                   <img src="assets/images/icons/next.png" alt="" class="w-4 h-4 object-cover" />
                 </span>
                 <span
-                  class="relative w-max aspect-square p-2 border rounded-lg border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110">
+                  class="relative w-max aspect-square p-2 border rounded-lg border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110"
+                >
                   <i class="hgi hgi-stroke hgi-rounded hgi-typescript-01 text-blue-500 text-xl"></i>
                 </span>
                 <span
-                  class="relative w-max aspect-square p-2 border rounded-lg border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110">
+                  class="relative w-max aspect-square p-2 border rounded-lg border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110"
+                >
                   <i class="hgi hgi-stroke hgi-rounded hgi-tailwindcss text-sky-500 text-xl"></i>
                 </span>
                 <span
-                  class="relative w-max aspect-square p-2 border rounded-lg border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110">
+                  class="relative w-max aspect-square p-2 border rounded-lg border-foreground text-foreground hover:bg-primary transition-transform flex items-center gap-1 hover:scale-110"
+                >
                   <i class="hgi hgi-stroke hgi-rounded hgi-shadcn-square text-black text-xl"></i>
                 </span>
               </div>
@@ -454,46 +556,66 @@
     </div>
   </section>
 
+  <!-- ==================== CONTACT SECTION ==================== -->
   <section id="contact" class="flex justify-center items-center min-h-dvh md:pb-0 pb-8">
     <div class="flex md:flex-row flex-col justify-center md:items-stretch items-center gap-8">
+      <!-- Contact Banner -->
       <div
-        class="md:w-1/3 w-full md:rounded-xl flex justify-center items-center bg-secondary text-primary font-bold text-4xl p-12 md:text-start text-center">
+        class="md:w-1/3 w-full md:rounded-xl flex justify-center items-center bg-secondary text-primary font-bold text-4xl p-12 md:text-start text-center"
+      >
         <p>Wanna create something excited?</p>
       </div>
+
+      <!-- Contact Form Container -->
       <div class="md:w-1/2 w-[95%] flex flex-col gap-4 p-8 bg-background rounded-2xl">
-        <p class="text-lime-500 text-2xl font-bold">Let's connect <span class="text-secondary">now!</span></p>
+        <p class="text-lime-500 text-2xl font-bold">
+          Let's connect <span class="text-secondary">now!</span>
+        </p>
+
         <form id="contact-form" class="flex flex-col gap-8">
           <div class="flex flex-col">
             <label for="email">Your Email</label>
             <div class="relative w-full text-sm">
               <i class="absolute top-8 left-3 hgi hgi-stroke hgi-rounded hgi-mail-01 text-base"></i>
-              <input name="email" id="email"
+              <input
+                name="email"
+                id="email"
                 class="w-full px-9 py-2 border rounded-xl focus:border-primary focus:outline-primary placeholder-neutral-500"
-                type="email" placeholder="johndoe@gmail.com">
+                type="email"
+                placeholder="johndoe@gmail.com"
+              />
             </div>
           </div>
+
           <div class="flex flex-col">
             <label for="message">Your Message</label>
             <div class="relative w-full text-sm">
-              <textarea name="message" id="message"
+              <textarea
+                name="message"
+                id="message"
                 class="w-full min-h-24 p-2 border rounded-xl focus:border-primary focus:outline-primary placeholder-neutral-500"
                 type="text"
-                placeholder="Let's build!">I have some projects that you may got excited with. Could you give me a favor?</textarea>
+                placeholder="Let's build!"
+              >I have some projects that you may got excited with. Could you give me a favor?</textarea>
             </div>
           </div>
-          <button type="submit"
-            class="flex justify-center items-center gap-2 w-full py-4 text-sm bg-primary text-foreground group cursor-pointer rounded-xl">
+
+          <button
+            type="submit"
+            class="flex justify-center items-center gap-2 w-full py-4 text-sm bg-primary text-foreground group cursor-pointer rounded-xl"
+          >
             <p class="group-hover:translate-x-1 transition-transform font-bold">Send</p>
-            <i
-              class="hgi hgi-stroke hgi-rounded hgi-send-horizontal group-hover:translate-x-1 transition-transform "></i>
+            <i class="hgi hgi-stroke hgi-rounded hgi-send-horizontal group-hover:translate-x-1 transition-transform"></i>
           </button>
         </form>
       </div>
     </div>
   </section>
 
+  <!-- ==================== FOOTER ==================== -->
   <footer class="w-full md:px-12 md:pt-12 px-8 pt-8 pb-2 flex flex-col gap-8 bg-secondary rounded-t-4xl text-primary">
     <div class="flex md:flex-nowrap flex-wrap md:gap-0 gap-x-8 gap-y-12 md:justify-between justify-center md:items-end">
+      <!-- Section Pages Links -->
       <div class="flex flex-col gap-2">
         <p class="text-lg font-bold">Section Pages</p>
         <div class="flex flex-col gap-2 font-sans text-xs text-background">
@@ -502,6 +624,8 @@
           <a class="hover:translate-x-1 transition-transform" href="#about">About</a>
         </div>
       </div>
+
+      <!-- Social Media Links -->
       <div class="flex flex-col gap-2">
         <p class="text-lg font-bold">Social Media</p>
         <div class="flex flex-col gap-2 font-sans text-xs text-background">
@@ -510,21 +634,35 @@
           <a class="hover:translate-x-1 transition-transform" href="https://linkedin.com">LinkedIn</a>
         </div>
       </div>
-      <a href="mailto:tsqf.h29@gmail.com"
-        class="text-background text-xs font-sans hover:translate-x-1 transition-transform">tsqf.h29@gmail.com</a>
+
+      <!-- Contact Email Link -->
+      <a
+        href="mailto:tsqf.h29@gmail.com"
+        class="text-background text-xs font-sans hover:translate-x-1 transition-transform"
+      >
+        tsqf.h29@gmail.com
+      </a>
     </div>
-    <p class="footer-headline md:text-[8.5rem] text-3xl lg:text-[10.5rem] font-black text-center">Muh Tsaqif - ZIFH
+
+    <!-- Big Headline Name -->
+    <p class="footer-headline md:text-[8.5rem] text-3xl lg:text-[10.5rem] font-black text-center">
+      Muh Tsaqif - ZIFH
     </p>
+
+    <!-- Bottom Copyright Bar -->
     <div class="flex justify-between items-center pt-2 pb-4 border-t text-xs text-background">
       <p>© 2026 · All rights reserved.</p>
       <p>made by zifh, not Claude</p>
     </div>
   </footer>
 
+  <!-- ==================== SCRIPTS ==================== -->
   <script>
+    // Inisialisasi Lenis Smooth Scroll
     const lenis = new Lenis({
-      duration: 2 - Math.pow(1 - 0.2, 4),
+      duration: 1.2,
       smoothWheel: true,
+      wheelMultiplier: 1,
     });
 
     lenis.on("scroll", ScrollTrigger.update);
@@ -532,9 +670,12 @@
     gsap.ticker.add((time) => {
       lenis.raf(time * 1000);
     });
-    gsap.ticker.lagSmoothing(0);
+
+    // Aktifkan lagSmoothing agar animasi tidak tersendat saat terjadi frame-delay
+    gsap.ticker.lagSmoothing(500, 33);
   </script>
 
+  <!-- Main Application Script -->
   <script src="js/script.js"></script>
 </body>
 
