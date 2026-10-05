@@ -51,16 +51,16 @@
 
   <!-- Navbar -->
   <nav
-    class="nav flex items-stretch text-foreground gap-8 fixed top-4 z-10 text-xs transition-none right-1/2 translate-x-1/2">
+    class="nav flex md:justify-center md:w-max w-full justify-between items-stretch text-foreground gap-8 fixed top-4 z-10 text-xs transition-none md:right-1/2 md:translate-x-1/2 md:px-0 px-4">
     <div
-      class="bg-transparent backdrop-blur-sm font-sans flex text-nowrap justify-center items-center py-2 px-4 border border-primary rounded-xl">
+      class=" bg-transparent backdrop-blur-sm font-sans md:flex hidden text-nowrap justify-center items-center py-2 px-4 border border-primary rounded-xl">
       <p class="font-medium">
         <span class="text-secondary animate-pulse">•</span> Available for
         projects
       </p>
     </div>
     <div
-      class="flex items-center justify-between md:gap-8 border border-primary py-2 px-4 rounded-xl max-w-xl w-full bg-transparent backdrop-blur-sm">
+      class="flex items-center justify-between md:gap-8 border border-primary py-2 px-4 rounded-xl max-w-xl w-max bg-transparent backdrop-blur-sm">
       <a href="#hero">
         <h1 class="font-bold text-primary text-xl ml-2">zfh</h1>
       </a>
@@ -69,19 +69,34 @@
         <a class="hover:text-secondary" href="#projects">Project</a>
       </div>
     </div>
-    <div class="flex justify-center items-center gap-1 px-3 py-2 rounded-xl text-black bg-primary group">
+    <div class="md:flex hidden justify-center items-center gap-1 px-3 py-2 rounded-xl text-black bg-primary group">
       <a class="group-hover:translate-x-1 transition-transform" href="#contact">Contact</a>
       <i class="hgi hgi-stroke hgi-rounded hgi-arrow-right-02 group-hover:translate-x-1 transition-transform"></i>
     </div>
+    <button id="hamburger"
+      class="md:hidden flex w-12 aspect-square rounded p-2 justify-center items-center text-xl text-black bg-primary z-50 cursor-pointer">
+      <i class="hgi hgi-stroke hgi-rounded hgi-menu-09"></i>
+    </button>
   </nav>
+
+  <div id="mobile-nav" class="hidden top-16 right-4 p-4 bg-white rounded-tl-xl rounded-b-xl text-secondary z-40">
+    <div class="flex flex-col gap-4">
+      <a class="hover:text-secondary" href="#about">About</a>
+      <a class="hover:text-secondary" href="#projects">Project</a>
+      <div class="flex justify-center items-center gap-1 px-3 py-2 rounded-xl text-black bg-primary group z-50">
+        <a class="group-hover:translate-x-1 transition-transform" href="#contact">Contact</a>
+        <i class="hgi hgi-stroke hgi-rounded hgi-arrow-right-02 group-hover:translate-x-1 transition-transform"></i>
+      </div>
+    </div>
+  </div>
 
   <!-- Hero Section -->
   <section id="hero" class="relative flex flex-col justify-center items-center gap-4 min-h-dvh">
     <img loading="eager" style="opacity: 0"
-      class="hero-element absolute top-12 right-8 text-primary w-52 hover:-rotate-164 aspect-square rotate-12"
+      class="hero-element absolute top-12 md:right-8 right-4 text-primary md:w-52 w-32 hover:-rotate-164 aspect-square rotate-12"
       src="assets/images/elements/flower_green.png" alt="" />
     <img loading="eager" style="opacity: 0"
-      class="hero-element absolute bottom-12 left-8 text-primary w-52 hover:rotate-270 aspect-square rotate-12"
+      class="hero-element absolute bottom-12 md:left-8 left-4 text-primary md:w-52 w-32 hover:rotate-270 aspect-square rotate-12"
       src="assets/images/elements/cross_blue.png" alt="" />
     <p class="font-mono text-xs uppercase">your creative web developer</p>
     <h1 class="text-primary font-bold md:text-[8rem] sm:text-7xl text-6xl">
@@ -131,9 +146,10 @@
   <!-- section marquee divider end -->
 
   <!-- About Section -->
-  <section id="about" class="bg-secondary relative z-2 p-24 flex flex-col justify-center items-center gap-8 min-h-dvh">
+  <section id="about"
+    class="bg-secondary relative z-2 md:p-24 py-8 px-4 flex flex-col justify-center items-center gap-8 min-h-dvh">
     <div class="max-w-5xl flex md:flex-row flex-col gap-8 justify-center items-stretch">
-      <div class="bento flex w-3/5 max-w-xl flex-col gap-2 p-12 rounded-2xl bg-background text-foreground">
+      <div class="bento flex md:w-3/5 max-w-xl flex-col gap-2 p-12 rounded-2xl bg-background text-foreground">
         <h1 class="font-bold text-4xl">
           Who <span class="text-lime-400">Am I</span>
         </h1>
@@ -153,7 +169,7 @@
           for the user.
         </p>
       </div>
-      <div class="w-2/5 max-w-md gap-8 flex flex-col items-stretch justify-center rounded-xl">
+      <div class="md:w-2/5 md:max-w-md gap-8 flex flex-col items-stretch justify-center rounded-xl">
         <div
           class="bento w-full bg-primary px-6 py-8 rounded-xl grid grid-rows-2 divide-y divide-black/40 text-black gap-4">
           <p class="flex items-end justify-between font-mono pb-4 text-sm font-bold">
@@ -205,7 +221,7 @@
         </div>
       </div>
     </div>
-    <div class="max-w-5xl flex gap-4 items-stretch">
+    <div class="max-w-5xl flex md:flex-row flex-col gap-4 items-stretch">
       <div class="bento flex-1 flex flex-col gap-4 pt-4 pb-8 px-6 rounded-2xl bg-primary text-black">
         <p class="font-mono text-secondary text-xs font-bold uppercase">
           currently learning
@@ -290,22 +306,24 @@
 
   <!-- Projects Section -->
   <section id="projects" class="bg-background text-foreground relative z-2 md:pt-16 overflow-hidden md:min-h-dvh">
-    <div class="project-item flex flex-col justify-center items-center gap-2">
+    <div class="project-item flex flex-col justify-center items-center md:mt-0 mt-16 gap-2">
       <p class="font-mono text-xs uppercase font-bold text-secondary">
         some of my</span>
       </p>
-      <p class="text-7xl dark:text-primary text-lime-500 rounded-xl w-max font-bold mb-4">
+      <p class="md:text-7xl text-4xl text-lime-500 rounded-xl w-max font-bold mb-4">
         Selected Projects
       </p>
     </div>
-    <div id="horizontal-track" class="w-max h-full relative flex items-center project-item">
+    <div id="horizontal-track"
+      class="w-max md:h-full h-max relative flex md:flex-row flex-col items-center project-item">
       <!-- Project Card 1 -->
-      <div class="bg-primary w-screen h-full flex justify-center items-stretch py-12">
-        <div class="flex justify-center gap-8">
-          <div class="w-1/2 h-max">
-            <img src="assets/images/background/moles.jpg" alt="" class="w-full object-contain rounded-xl" />
+      <div class="bg-primary w-screen md:h-full flex justify-center md:items-stretch items-center py-12 md:px-0 px-8">
+        <div class="flex md:flex-row flex-col justify-center gap-8">
+          <div class="md:w-1/2 w-full h-max">
+            <img loading="lazy" src="assets/images/background/moles.jpg" alt=""
+              class="w-full object-contain rounded-xl" />
           </div>
-          <div class="w-1/4 h-max flex flex-col bg-background rounded-xl p-4">
+          <div class="md:w-1/4 w-full h-max flex flex-col bg-background rounded-xl p-4">
             <span class="w-full bg-secondary px-4 text-sm text-background rounded-xl font-bold py-2 mb-4">Project
               01/03</span>
             <h1 class="text-4xl font-bold mx-2 mb-2">Moles</h1>
@@ -345,12 +363,12 @@
       </div>
 
       <!-- Project Card 2 -->
-      <div class="bg-secondary w-screen h-full flex justify-center items-stretch py-12">
-        <div class="flex justify-center gap-8">
-          <div class="w-1/2 h-max">
+      <div class="bg-secondary w-screen md:h-full flex justify-center md:items-stretch items-center py-12 md:px-0 px-8">
+        <div class="flex md:flex-row flex-col justify-center gap-8">
+          <div class="md:w-1/2 w-full h-max">
             <img src="assets/images/background/digilib.jpg" alt="" class="w-full object-contain rounded-xl" />
           </div>
-          <div class="w-1/4 h-max flex flex-col bg-background rounded-xl p-4">
+          <div class="md:w-1/4 w-full h-max flex flex-col bg-background rounded-xl p-4">
             <span class="w-full bg-primary px-4 text-sm text-foreground rounded-xl font-bold py-2 mb-4">Project
               02/03</span>
             <h1 class="text-4xl font-bold mx-2 mb-2">Digilib</h1>
@@ -390,12 +408,12 @@
       </div>
 
       <!-- Project Card 3 -->
-      <div class="bg-primary w-screen h-full flex justify-center pt-12">
-        <div class="flex justify-center gap-8">
-          <div class="w-1/2 h-max">
+      <div class="bg-primary w-screen h-full flex justify-center py-12">
+        <div class="flex md:flex-row flex-col justify-center gap-8 md:px-0 px-8">
+          <div class="md:w-1/2 w-full h-max">
             <img src="assets/images/background/mouseIoT.jpg" alt="" class="w-full object-contain rounded-xl" />
           </div>
-          <div class="w-1/4 h-max flex flex-col bg-background rounded-xl p-4">
+          <div class="md:w-1/4 w-full h-max flex flex-col bg-background rounded-xl p-4">
             <span class="w-full bg-secondary px-4 text-sm text-background rounded-xl font-bold py-2 mb-4">Project
               03/03</span>
             <h1 class="text-4xl font-bold mx-2 mb-2">Mouse-IoT</h1>
@@ -436,12 +454,13 @@
     </div>
   </section>
 
-  <section id="contact" class="flex justify-center items-center min-h-dvh">
-    <div class="flex justify-center items-stretch gap-8">
-      <div class="w-1/3 rounded-xl flex justify-center items-center bg-secondary text-primary font-bold text-4xl p-12">
+  <section id="contact" class="flex justify-center items-center min-h-dvh md:pb-0 pb-8">
+    <div class="flex md:flex-row flex-col justify-center md:items-stretch items-center gap-8">
+      <div
+        class="md:w-1/3 w-full md:rounded-xl flex justify-center items-center bg-secondary text-primary font-bold text-4xl p-12 md:text-start text-center">
         <p>Wanna create something excited?</p>
       </div>
-      <div class="w-1/2 flex flex-col gap-4 p-8 bg-background rounded-2xl">
+      <div class="md:w-1/2 w-[95%] flex flex-col gap-4 p-8 bg-background rounded-2xl">
         <p class="text-lime-500 text-2xl font-bold">Let's connect <span class="text-secondary">now!</span></p>
         <form id="contact-form" class="flex flex-col gap-8">
           <div class="flex flex-col">

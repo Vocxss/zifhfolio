@@ -1,18 +1,40 @@
 gsap.registerPlugin(ScrollTrigger)
+const horizontalTrack = document.querySelector("#horizontal-track");
 
 let animation;
-let showNav = true 
-
+let showNav = true
 let lastScroll = window.scrollY
+let showMobileNav = true
+const isDesktop = () => window.innerWidth >= 768
+
+const hamburgerMenu = document.getElementById("hamburger")
+const marqueeTrack1 = document.querySelector("#marquee-track1");
+const marqueeGroup1 = document.querySelector("#marquee-group1");
+const marqueeTrack2 = document.querySelector("#marquee-track2");
+const marqueeGroup2 = document.querySelector("#marquee-group2");
+const mobileNav = document.getElementById("mobile-nav")
+
+hamburgerMenu.addEventListener("click", () => {
+  if (!showMobileNav) {
+    showMobileNav = true
+    document.body.style.overflowY = "hidden"
+    mobileNav.classList.replace("hidden", "fixed")
+  } else {
+    showMobileNav = false
+    document.body.style.overflowY = "auto"
+    mobileNav.classList.replace("fixed", "hidden")
+  }
+  const navTl = gsap.timeline()
+})
 
 window.addEventListener("scroll", () => {
   let currentScrollProgress = window.scrollY
-  
+
   if (currentScrollProgress <= 20) {
     gsap.to(".nav", {
       y: 0,
       ease: "power2.out",
-      duration: .5  
+      duration: .5
     })
 
     showNav = true
@@ -23,34 +45,29 @@ window.addEventListener("scroll", () => {
       y: -100,
       ease: "power2.out",
       duration: .5
-    }) 
+    })
     showNav = false
   }
-  
+
   if (currentScrollProgress - lastScroll < -10 && !showNav) {
     gsap.to(".nav", {
       y: 0,
       ease: "power2.out",
       duration: .5
-    }) 
+    })
     showNav = true
   }
-  
+
   lastScroll = currentScrollProgress
 })
 
-const marqueeTrack1 = document.querySelector("#marquee-track1");
-const marqueeGroup1 = document.querySelector("#marquee-group1");
-const marqueeTrack2 = document.querySelector("#marquee-track2");
-const marqueeGroup2 = document.querySelector("#marquee-group2");
-const horizontalTrack = document.querySelector("#horizontal-track");
 
-gsap.to(marqueeTrack1, {
-  x: () => -marqueeGroup1.offsetWidth,
-  duration: 15,
-  ease: "none",
-  repeat: -1
-});
+x: () => -marqueeGroup1.offsetWidth,
+  gsap.to(marqueeTrack1, {
+    duration: 15,
+    ease: "none",
+    repeat: -1
+  });
 
 gsap.to(marqueeTrack2, {
   x: () => -marqueeGroup2.offsetWidth,
@@ -107,45 +124,48 @@ gsap.fromTo(".bento", {
   ease: "expo.out",
 })
 
-gsap.fromTo(".project-item",
-  {
-    opacity: 0,
-    scale: 0,
-  },
-  {
-    duration: 2,
-    opacity: 1,
-    scale: 1,
-    ease: "expo.out",
+
+if (isDesktop()) {
+  gsap.fromTo(".project-item",
+    {
+      opacity: 0,
+      scale: 0,
+    },
+    {
+      duration: 2,
+      opacity: 1,
+      scale: 1,
+      ease: "expo.out",
+      scrollTrigger: {
+        trigger: "#projects",
+        start: "bottom bottom",
+        end: "bottom bottom",
+        // markers: true,
+        onComplete: () => {
+          gsap.set(".hero-element", { clearProps: "all" })
+        }
+      },
+    }
+  )
+
+  gsap.to(horizontalTrack, {
+    x: () => -(horizontalTrack.scrollWidth - window.innerWidth),
+
+    ease: "none",
+
     scrollTrigger: {
       trigger: "#projects",
-      start: "bottom bottom",
-      end: "bottom bottom",
-      // markers: true,
-      onComplete: () => {
-        gsap.set(".hero-element", { clearProps: "all" })
-      }
+      start: "top top",
+      end: () => `+=${horizontalTrack.scrollWidth}`,
+      scrub: true,
+      pin: true,
+      invalidateOnRefresh: true,
     },
-  }
-)
-
-gsap.to(horizontalTrack, {
-  x: () => -(horizontalTrack.scrollWidth - window.innerWidth),
-
-  ease: "none",
-
-  scrollTrigger: {
-    trigger: "#projects",
-    start: "top top",
-    end: () => `+=${horizontalTrack.scrollWidth}`,
-    scrub: true,
-    pin: true,
-    invalidateOnRefresh: true,
-  },
-});
+  });
+}
 // console.log(themeIcon);
 
-document.getElementById('contact-form').addEventListener('submit', function(e) {
+document.getElementById('contact-form').addEventListener('submit', function (e) {
   e.preventDefault();
 
   const email = document.getElementById('email').value;
@@ -153,7 +173,7 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
 
   const emailTujuan = "tsqf.h29@gmail.com";
   const subjek = `New message from ${email}`;
-  
+
   const isiEmail = `Hello, Zifh.\n\nemail: ${email}\nPesan: ${pesan}`;
 
   const mailtoUrl = `mailto:${emailTujuan}?subject=${encodeURIComponent(subjek)}&body=${encodeURIComponent(isiEmail)}`;
